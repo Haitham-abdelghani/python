@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game</title>
+  </head>
+  <body>
+    <h1>
+      {{ game.player.name }} - Current Location: {{ game.current_location }}
+    </h1>
+    <p>{{ game.location_description }}</p>
+    <p>Available items: {{ game.items }}</p>
+    <p>Available directions: {{ game.directions }}</p>
+
+    <ul>
+      {% for direction in game.map[game.current_location]["directions"] %}
+      <li>
+        <a href="{{ url_for('move', direction=direction) }}">{{ direction }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
